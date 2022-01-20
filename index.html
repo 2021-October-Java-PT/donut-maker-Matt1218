@@ -10,8 +10,8 @@
 </head>
 
 <body>
-  <div class="container">
-    <h1 class="main-header">Welcome!</h1>
+  <div id ="container">
+    <h1 class="main-header">Welcome to Fred's Donut Clicker!</h1>
     <section class="click-section">
       <h2>Donut Maker</h2>
       <button id="donut-button">Click me to make a donut!</button>
@@ -32,6 +32,7 @@
     <section class="donutmultiplier-section">
       <h2>Donut Multiplier</h2>
       <button id ="donutmultiplier-button">Click me to purchase 1 Donut Multiplier!</button>
+      <button id = "actdonutmultiplier-button">Click me to activate your Donut Multiplier(s)!</button>
       <!-- need to disable button when user does not have enough donuts (currency) to purchase donut multipliers -->
     <div id = "myDonutMultipliers">
 
@@ -72,9 +73,9 @@
         </ul>
       </nav>
     </div>
-
-
-
+    <div id ="reset">
+      <button id = "reset-button">Reset Game</button>
+    </div>
   </div>
   <script src="./donut-maker-app.js"></script>
 </body>
