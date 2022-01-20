@@ -3,7 +3,7 @@ import DonutMaker from './donut-maker';
 const myDonutsDiv = document.querySelector('#myDonuts');
 const myAutoClicksDiv = document.querySelector('#myAutoClicks');
 
-let currentPrice = 10;
+let currentPrice = 100;
 let ticks = 0;
 
 
@@ -56,15 +56,19 @@ function buyAutoClicker() {
             createdDonut.autoClickerCount += 1;
         }
 
-        let autoClick = setInterval(() => {
-            console.log('tick', ticks++, createdDonut.donutCount++);
-            createdDonut.donutCount += 1;
-            donutClicksPara.innerText = 'Automatically making: ' + Math.floor(createdDonut.donutCount) + ' donuts';
-            if (ticks >= 10) {
-                clearInterval(autoClick);
-                console.log('stop');
-            }
-        }, 1000);
+
+        if (createdDonut.autoClickerCount >= 1) {
+            let autoClick = setInterval(() => {
+                // console.log(ticks ++, createdDonut.donutCount++);
+                ticks++;
+                createdDonut.donutCount += 1;
+                donutClicksPara.innerText = 'Automatically making: ' + Math.floor(createdDonut.donutCount) + ' donuts';
+                if (ticks >= 100000) {
+                    clearInterval(autoClick);
+                    // console.log('stop');
+                }
+            }, 1000);
+        }
 
 
         autoClicksPara.innerText = 'You have purchased ' + createdDonut.autoClickerCount + ' auto click(s)';
@@ -72,6 +76,7 @@ function buyAutoClicker() {
         console.log(currentPrice);
 
     });
+
 
 
 }
