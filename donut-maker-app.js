@@ -2,8 +2,10 @@ import DonutMaker from './donut-maker';
 
 const myDonutsDiv = document.querySelector('#myDonuts');
 const myAutoClicksDiv = document.querySelector('#myAutoClicks');
+const myDonutMultipliersDiv = document.querySelector('#myDonutMultipliers');
 
-let currentPrice = 10;
+let currentMultiplierPrice = 10;
+let currentAutoClickerPrice = 100;
 let ticks = 0;
 
 const createdDonut = new DonutMaker(0, 0, 0);
@@ -14,6 +16,9 @@ const buyAutoClickerBtn = document.querySelector('#autoclicker-button');
 const createdAutoClickSection = document.createElement('section');
 const autoClicksPara = document.createElement('p');
 const actAutoClickerBtn = document.querySelector('#actautoclicker-button');
+const buyMuliplierBtn = document.querySelector('#donutmultiplier-button');
+const createdMultipliersSection = document.createElement('section');
+const multipliersPara = document.createElement('p');
 
 renderPage();
 
@@ -21,6 +26,7 @@ function renderPage() {
     addADonut();
     buyAutoClicker();
     actAutoClicker();
+    buyDonutMultiplier();
 }
 
 function addADonut() {
@@ -33,7 +39,7 @@ function addADonut() {
 
         createdDonut.donutClick();
 
-        donutClicksPara.innerText = 'You have made ' + Math.floor(createdDonut.donutCount) + ' donuts!';
+        donutClicksPara.innerText = 'Total amount of donuts: ' + Math.floor(createdDonut.donutCount);
     });
 
 }
@@ -46,15 +52,16 @@ function buyAutoClicker() {
     myDonutsDiv.appendChild(createdDonutSection);
 
     buyAutoClickerBtn.addEventListener('click', () => {
-        if (currentPrice <= createdDonut.donutCount) {
-            createdDonut.donutCount = createdDonut.donutCount - currentPrice;
-            currentPrice = currentPrice * 1.1;
+        if (currentAutoClickerPrice <= createdDonut.donutCount) {
+            createdDonut.donutCount = createdDonut.donutCount - currentAutoClickerPrice;
+            currentAutoClickerPrice = currentAutoClickerPrice * 1.1;
             createdDonut.autoClickerCount += 1;
         }
 
+        donutClicksPara.innerText = 'Total amount of donuts: ' + Math.floor(createdDonut.donutCount);
         autoClicksPara.innerText = 'You have purchased ' + createdDonut.autoClickerCount + ' auto click(s)';
         // console.log(createdDonut.donutCount);
-        // console.log(currentPrice);
+        // console.log(currentAutoClickerPrice);
 
     });
 
@@ -66,7 +73,7 @@ function actAutoClicker() {
             let autoClick = setInterval(() => {
                 // console.log(ticks ++, createdDonut.donutCount++);
                 ticks++;
-                createdDonut.donutCount += 1;
+                createdDonut.donutCount += 1 * createdDonut.autoClickerCount;
                 donutClicksPara.innerText = 'Total amount of donuts: ' + Math.floor(createdDonut.donutCount);
                 if (ticks >= 100000) {
                     clearInterval(autoClick);
@@ -74,5 +81,21 @@ function actAutoClicker() {
                 }
             }, 1000);
         }
+    });
+}
+
+function buyDonutMultiplier() {
+    createdMultipliersSection.appendChild(multipliersPara);
+    myDonutMultipliersDiv.appendChild(createdMultipliersSection);
+
+    buyMuliplierBtn.addEventListener('click', () => {
+        if (currentMultiplierPrice <= createdDonut.donutCount) {
+            createdDonut.donutCount = createdDonut.donutCount - currentMultiplierPrice;
+            currentMultiplierPrice = currentMultiplierPrice * 1.1;
+            createdDonut.donutMultiplierCount += 1;
+            // console.log(createdDonut.donutMultiplierCount);
+        }
+        donutClicksPara.innerText = 'Total amount of donuts: ' + Math.floor(createdDonut.donutCount);
+        multipliersPara.innerText = 'You have purchased ' + createdDonut.donutMultiplierCount + ' donut multiplier(s)';
     });
 }
