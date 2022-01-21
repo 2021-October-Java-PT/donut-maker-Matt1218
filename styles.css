@@ -5,14 +5,81 @@ body {
 }
 
 .main-header{
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    height: auto;
+    display: block;
+    text-align: center;
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+
+.click-section{
+    display: block;
+    margin: 5rem auto 5rem auto;
+    text-align: center;
+}
+
+.autoclicker-section{
+    display: block;
+    margin: 5rem auto 5rem auto;
+    text-align: center;
+}
+
+.donutmultiplier-section{
+    display: block;
+    margin: 5rem auto 5rem auto;
+    text-align: center;
+}
+
+.nav-bar{
+    position: absolute;
+    top: 2px;
+    left: 2px;
+}
+
+#company-info{
+    display: block;
+    margin: 5rem;
+    text-align: center;
+}
+
+#inspiration-info{
+    display: block;
+    margin: 5rem;
+    text-align: center;
+}
+
+#contact-info{
+    display: block;
+    text-align: center;
+}
+
+.contact-navbar{
+    margin: 1rem;
 }
 
 
+.contact-list{
+    list-style: none;
+}
 
+#reset{
+    position: absolute;
+    top: 2px;
+    right: 2px;
+}
+
+#reset-button{
+    padding: 15px;
+    margin: 10px;
+    font-size: 15px;
+    border: none;
+}
+
+#reset-button:hover{
+    background-color: red;
+}
+button{
+    font-weight: bold;
+}
 
 
 button:not(#donut-button, .dropdown-button){
@@ -28,8 +95,10 @@ button:not(#donut-button, .dropdown-button){
     animation-name: donut-button;
     animation-duration: 4s;
     animation-iteration-count: infinite;
-    
+    font-size: large;
 }
+
+
 
 #donut-button:hover {
     border-radius: 20%;
@@ -42,19 +111,15 @@ button:not(#donut-button, .dropdown-button){
     
 }
 
-
-
-
-
-
 .dropdown-button{
-    background-color: rgb(243, 77, 0);
+    background-color: rgb(255, 0, 0);
     color: rgb(255, 255, 255);
     padding: 15px;
     margin: 10px;
     font-size: 15px;
     border: none;
     box-shadow: 2px 2px black;
+    
 }
 
 .dropdown{
@@ -79,7 +144,7 @@ button:not(#donut-button, .dropdown-button){
 }
 
 .dropdown-content a:hover {
-    background-color: rgb(167, 162, 162);
+    background-color: rgb(253, 77, 77);
 }
 
 .dropdown:hover .dropdown-content {
@@ -87,5 +152,10 @@ button:not(#donut-button, .dropdown-button){
 }
 
 .dropdown:hover .dropdown-button {
-    background-color: red;
+    opacity: 0.7;
+}
+
+a{
+    text-decoration: none;
+    color: blue;
 }
