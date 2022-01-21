@@ -68,6 +68,9 @@ body {
 }
 
 #reset-button{
+    background-color: rgb(151, 207, 151);
+    box-shadow: 2px 2px;
+    cursor: pointer;
     padding: 15px;
     margin: 10px;
     font-size: 15px;
@@ -82,10 +85,10 @@ button{
 }
 
 
-button:not(#donut-button, .dropdown-button){
+/* button:not(#donut-button, .dropdown-button){
     background-color: rgb(151, 207, 151);
     box-shadow: 2px 2px;
-}
+} */
 
 #donut-button{
     border-radius: 50%;
@@ -159,3 +162,55 @@ a{
     text-decoration: none;
     color: blue;
 }
+
+#autoclicker-button{
+    background-color: rgb(151, 207, 151);
+    box-shadow: 2px 2px;
+    cursor: pointer;
+}
+
+#autoclicker-button:disabled{
+    background: #999;
+    color: #555;
+    cursor: not-allowed;
+}
+
+#actautoclicker-button{
+    background-color: rgb(151, 207, 151);
+    box-shadow: 2px 2px;
+    cursor: pointer;
+}
+
+#actautoclicker-button:disabled{
+    background: #999;
+    color: #555;
+    cursor: not-allowed;
+}
+
+#donutmultiplier-button{
+    background-color: rgb(151, 207, 151);
+    box-shadow: 2px 2px;
+    cursor: pointer;
+}
+
+#donutmultiplier-button:disabled{
+    background: #999;
+    color: #555;
+    cursor: not-allowed;
+}
+/* 
+#actdonutmultiplier-button{
+    background-color: rgb(151, 207, 151);
+    box-shadow: 2px 2px;
+    cursor: pointer;
+} */
+
+/* #actdonutmultiplier-button:disabled{
+    background: #999;
+    color: #555;
+    cursor: not-allowed;
+} */
+
+
+
+

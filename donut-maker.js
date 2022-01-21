@@ -9,12 +9,9 @@ class DonutMaker {
         this.donutCount ++;
     }
 
-    
-
-
-
-
-
+    incrementDonuts(amount) {
+        this.donutCount = this.donutCount + amount;
+    }
 }
 
 export default DonutMaker;
