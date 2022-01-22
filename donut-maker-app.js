@@ -20,8 +20,10 @@ const actAutoClickerBtn = document.querySelector('#actautoclicker-button');
 const buyMuliplierBtn = document.querySelector('#donutmultiplier-button');
 const createdMultipliersSection = document.createElement('section');
 const multipliersPara = document.createElement('p');
-// const actDonutMultiplierBtn = document.querySelector('#actdonutmultiplier-button');
 const resetGameBtn = document.querySelector('#reset-button');
+const modal = document.getElementById('about-dev-modal');
+const modalBtn = document.getElementById('about-dev-button');
+const span = document.getElementById('close');
 
 renderPage();
 
@@ -30,9 +32,9 @@ function renderPage() {
     buyAutoClicker();
     actAutoClicker();
     buyDonutMultiplier();
-    // actDonutMultiplier();
     resetGame();
     updateBtns();
+    modalEffects();
 }
 
 function addADonut() {
@@ -66,11 +68,7 @@ function buyAutoClicker() {
         updateBtns();
         donutClicksPara.innerText = 'Total amount of donuts: ' + Math.round(createdDonut.donutCount);
         autoClicksPara.innerText = 'You have purchased ' + createdDonut.autoClickerCount + ' auto click(s)';
-        // console.log(createdDonut.donutCount);
-        // console.log(currentAutoClickerPrice);
-
     });
-
 }
 
 function actAutoClicker() {
@@ -81,7 +79,7 @@ function actAutoClicker() {
                 createdDonut.donutCount += (1 * createdDonut.autoClickerCount) * Math.pow(1.2, createdDonut.donutMultiplierCount);
                 updateBtns();
                 donutClicksPara.innerText = 'Total amount of donuts: ' + Math.round(createdDonut.donutCount);
-                if (ticks >= 100000) {
+                if (ticks >= 1000000000000) {
                     clearInterval(autoClick);
                 }
             }, 1000);
@@ -106,21 +104,11 @@ function buyDonutMultiplier() {
     });
 }
 
-// function actDonutMultiplier() {
-//     actDonutMultiplierBtn.addEventListener('click', () => {
-//         updateBtns();
-
-//         donutClicksPara.innerText = 'Total amount of donuts: ' + Math.round(createdDonut.donutCount);
-
-//     });
-// }
-
 function resetGame() {
     resetGameBtn.addEventListener('click', () => {
         location.reload();
     });
 }
-
 
 function incrementedDonuts() {
     if (createdDonut.donutMultiplierCount >= 1) {
@@ -142,16 +130,23 @@ function updateBtns() {
     } else {
         document.getElementById('actautoclicker-button').disabled = false;
     }
-
     if (currentMultiplierPrice > createdDonut.donutCount) {
         document.getElementById('donutmultiplier-button').disabled = true;
     } else {
         document.getElementById('donutmultiplier-button').disabled = false;
     }
+}
 
-    // if (createdDonut.donutMultiplierCount < 1) {
-    //     document.getElementById('actdonutmultiplier-button').disabled = true;
-    // } else {
-    //     document.getElementById('actdonutmultiplier-button').disabled = false;
-    // }
+function modalEffects() {
+    modalBtn.addEventListener('click', () => {
+        modal.style.display = 'block';
+    });
+    span.addEventListener('click', () => {
+        modal.style.display = 'none';
+    });
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    }
 }

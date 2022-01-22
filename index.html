@@ -10,7 +10,7 @@
 </head>
 
 <body>
-  <div id ="container">
+  <div id="container">
     <h1 class="main-header">Welcome to Fred's Donut Clicker!</h1>
     <section class="click-section">
       <h2>Donut Maker</h2>
@@ -22,18 +22,18 @@
     </section>
     <section class="autoclicker-section">
       <h2>Auto Clicker</h2>
-      <button id="autoclicker-button" >Click me to purchase 1 Auto Clicker!</button>
-      <button id="actautoclicker-button" >Click me to activate your Auto Clicker(s)!</button>
+      <button id="autoclicker-button">Click me to purchase 1 Auto Clicker!</button>
+      <button id="actautoclicker-button">Click me to activate your Auto Clicker(s)!</button>
       <div id="myAutoClicks">
 
       </div>
     </section>
     <section class="donutmultiplier-section">
       <h2>Donut Multiplier</h2>
-      <button id ="donutmultiplier-button">Click me to purchase 1 Donut Multiplier!</button>
-    <div id = "myDonutMultipliers">
+      <button id="donutmultiplier-button">Click me to purchase 1 Donut Multiplier!</button>
+      <div id="myDonutMultipliers">
 
-    </div>
+      </div>
     </section>
     <nav class="nav-bar">
       <div class="dropdown">
@@ -42,24 +42,22 @@
           <a href="#company-info">Fred the Baker Baking Company</a>
           <a href="#inspiration-info">Inspiration for the Game</a>
           <a href="#contact-info">Contact Info</a>
+          <button id="about-dev-button">About the Developer</button>
         </div>
       </div>
     </nav>
     <div id="company-info">
       <h1 class="company-header">Fred the Baker Baking Company</h1>
-      <p class="company-para">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-        ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-        aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-        fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
-        anim id est laborum."</p>
+      <p class="company-para">Fred the Baker Baking Company was founded in early 2022. Fred has always been obessed
+        with donuts and decided to make a company based entirely on making them. After all of these years, Fred has his
+        dream company! Fun fact: Fred has eaten a donut a day since he was 10! He says the taste out weighs the health
+        issues!</p>
     </div>
     <div id="inspiration-info">
-      <h1 class="inspiration-header">The game behind it all; Cookie Clicker</h1>
-      <p class="inspiration-para">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-        nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-        dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-        deserunt mollit anim id est laborum."</p>
+      <h1 class="inspiration-header">The game behind it all; <a href="https://orteil.dashnet.org/cookieclicker/">Cookie
+          Clicker</a></h1>
+      <p class="inspiration-para">The inspiration for this application is a game called <a
+          href="https://orteil.dashnet.org/cookieclicker/">Cookie Clicker</a>. I could not have done it without you!</p>
     </div>
     <div id="contact-info">
       <nav class="contact-navbar">
@@ -70,8 +68,17 @@
         </ul>
       </nav>
     </div>
-    <div id ="reset">
-      <button id = "reset-button">Reset Game</button>
+
+    <div id="about-dev-modal">
+      <div id="modal-content">
+        <h2 id="about-dev-header">About the Developer</h2>
+        <span id="close">x</span>
+        <p>adsflkasdjfklasdfjasdlyfsdalfjnalsdjk;fhsadlkjfhaasldkfjhasdlkf</p>
+      </div>
+    </div>
+
+    <div id="reset">
+      <button id="reset-button">Reset Game</button>
     </div>
   </div>
   <script src="./donut-maker-app.js"></script>

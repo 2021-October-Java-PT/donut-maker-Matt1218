@@ -6,7 +6,7 @@ class DonutMaker {
     }
 
     donutClick() {
-        this.donutCount ++;
+        this.donutCount++;
     }
 
     incrementDonuts(amount) {
