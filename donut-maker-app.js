@@ -5,14 +5,16 @@ const myAutoClicksDiv = document.querySelector('#myAutoClicks');
 const myDonutMultipliersDiv = document.querySelector('#myDonutMultipliers');
 
 let currentMultiplierPrice = 10;
-let currentAutoClickerPrice = 100;
+let currentAutoClickerPrice = 10;
 let ticks = 0;
+let autoClickerActivated = false;
 
 
 const createdDonut = new DonutMaker(0, 0, 0);
 const createDonutBtn = document.querySelector('#donut-button');
 const createdDonutSection = document.createElement('section');
 const donutClicksPara = document.createElement('p');
+const donutMultiValuePara = document.createElement('p');
 const buyAutoClickerBtn = document.querySelector('#autoclicker-button');
 const createdAutoClickSection = document.createElement('section');
 const autoClicksPara = document.createElement('p');
@@ -24,6 +26,9 @@ const resetGameBtn = document.querySelector('#reset-button');
 const modal = document.getElementById('about-dev-modal');
 const modalBtn = document.getElementById('about-dev-button');
 const span = document.getElementById('close');
+const autoClickCostPara = document.createElement('p');
+const donutMutliCostPara = document.createElement('p');
+
 
 renderPage();
 
@@ -35,7 +40,22 @@ function renderPage() {
     resetGame();
     updateBtns();
     modalEffects();
+    let autoClick = setInterval(() => {
+        if (autoClickerActivated) {
+            ticks++;
+            createdDonut.donutCount += (1 * createdDonut.autoClickerCount) * Math.pow(1.2, createdDonut.donutMultiplierCount);
+            updateBtns();
+
+            donutClicksPara.innerText = 'Total amount of donuts: ' + Math.round(createdDonut.donutCount);
+            if (ticks >= 1000000000000000) {
+                clearInterval(autoClick);
+            }
+        }
+    }, 1000);
+
 }
+
+
 
 function addADonut() {
 
@@ -53,11 +73,13 @@ function addADonut() {
 }
 
 function buyAutoClicker() {
-
     createdAutoClickSection.appendChild(autoClicksPara);
     myAutoClicksDiv.appendChild(createdAutoClickSection);
     createdDonutSection.appendChild(donutClicksPara);
     myDonutsDiv.appendChild(createdDonutSection);
+    myAutoClicksDiv.appendChild(autoClickCostPara);
+
+    
 
     buyAutoClickerBtn.addEventListener('click', () => {
         if (currentAutoClickerPrice <= createdDonut.donutCount) {
@@ -65,32 +87,28 @@ function buyAutoClicker() {
             currentAutoClickerPrice = currentAutoClickerPrice * 1.1;
             createdDonut.autoClickerCount += 1;
         }
+
         updateBtns();
+
         donutClicksPara.innerText = 'Total amount of donuts: ' + Math.round(createdDonut.donutCount);
         autoClicksPara.innerText = 'You have purchased ' + createdDonut.autoClickerCount + ' auto click(s)';
+        autoClickCostPara.innerText = 'Cost of next Auto Clicker: ' + currentAutoClickerPrice;
+
     });
+
 }
 
 function actAutoClicker() {
     actAutoClickerBtn.addEventListener('click', () => {
-        if (createdDonut.autoClickerCount >= 1) {
-            let autoClick = setInterval(() => {
-                ticks++;
-                createdDonut.donutCount += (1 * createdDonut.autoClickerCount) * Math.pow(1.2, createdDonut.donutMultiplierCount);
-                updateBtns();
-                donutClicksPara.innerText = 'Total amount of donuts: ' + Math.round(createdDonut.donutCount);
-                if (ticks >= 1000000000000) {
-                    clearInterval(autoClick);
-                }
-            }, 1000);
-        }
-
+        autoClickerActivated = true;
+        autoClicksPara.innerText = 'You have activated your first ' + createdDonut.autoClickerCount + ' auto click(s)';
     });
 }
 
 function buyDonutMultiplier() {
     createdMultipliersSection.appendChild(multipliersPara);
     myDonutMultipliersDiv.appendChild(createdMultipliersSection);
+    myDonutMultipliersDiv.appendChild(donutMutliCostPara);
 
     buyMuliplierBtn.addEventListener('click', () => {
         if (currentMultiplierPrice <= createdDonut.donutCount) {
@@ -100,7 +118,9 @@ function buyDonutMultiplier() {
         }
         updateBtns();
         donutClicksPara.innerText = 'Total amount of donuts: ' + Math.round(createdDonut.donutCount);
-        multipliersPara.innerText = 'You have purchased ' + createdDonut.donutMultiplierCount + ' donut multiplier(s)';
+        multipliersPara.innerText = 'You have purchased and activated ' + createdDonut.donutMultiplierCount + ' donut multiplier(s)';
+        donutMutliCostPara.innerText = 'Cost of next Donut Multiplier: ' + currentMultiplierPrice;
+
     });
 }
 
@@ -111,12 +131,23 @@ function resetGame() {
 }
 
 function incrementedDonuts() {
+    createdDonutSection.appendChild(donutClicksPara);
+    myDonutsDiv.appendChild(createdDonutSection);
+    createdDonutSection.appendChild(donutMultiValuePara);
+
     if (createdDonut.donutMultiplierCount >= 1) {
-        let donutsToIncrementBy = Math.pow(1.2, createdDonut.donutMultiplierCount)
+
         createdDonut.incrementDonuts(donutsToIncrementBy);
     } else {
         createdDonut.donutClick();
     }
+    updateBtns();
+    let donutsToIncrementBy = Math.pow(1.2, createdDonut.donutMultiplierCount)
+    donutMultiValuePara.innerText = 'Value of each click: ' + donutsToIncrementBy;
+
+
+
+
 }
 
 function updateBtns() {
@@ -135,6 +166,10 @@ function updateBtns() {
     } else {
         document.getElementById('donutmultiplier-button').disabled = false;
     }
+    if (autoClickerActivated) {
+        document.getElementById('actautoclicker-button').disabled = true;
+    }
+
 }
 
 function modalEffects() {
