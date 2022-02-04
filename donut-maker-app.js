@@ -5,7 +5,7 @@ const myAutoClicksDiv = document.querySelector('#myAutoClicks');
 const myDonutMultipliersDiv = document.querySelector('#myDonutMultipliers');
 
 let currentMultiplierPrice = 10;
-let currentAutoClickerPrice = 10;
+let currentAutoClickerPrice = 100;
 let ticks = 0;
 let autoClickerActivated = false;
 
@@ -79,7 +79,7 @@ function buyAutoClicker() {
     myDonutsDiv.appendChild(createdDonutSection);
     myAutoClicksDiv.appendChild(autoClickCostPara);
 
-    
+
 
     buyAutoClickerBtn.addEventListener('click', () => {
         if (currentAutoClickerPrice <= createdDonut.donutCount) {
